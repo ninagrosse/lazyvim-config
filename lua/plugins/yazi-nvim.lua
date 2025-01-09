@@ -3,21 +3,8 @@ return {
     "mikavilpas/yazi.nvim",
     event = "VeryLazy",
     keys = {
-      {
-        "<leader>yy",
-        "<cmd>Yazi<cr>",
-        desc = "Open Yazi",
-      },
-      {
-        "<leader>yw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open Yazi in nvim's working directory",
-      },
-      {
-        "<leader>yt",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last Yazi session",
-      },
+      { "<leader>e", "<cmd>Yazi<cr>", desc = "Open Yazi (Root Dir)" },
+      { "<leader>E", "<cmd>Yazi cwd<cr>", desc = "Open Yazi (cwd)" },
     },
     opts = {
       -- If you want to open Yazi instead of netrw. neo-tree hijacking must be disabled!
