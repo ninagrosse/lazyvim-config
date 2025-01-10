@@ -32,10 +32,18 @@ set idearefactormode=normal
 "" ========================================================
 "" Plugin Settings
 "" ========================================================
+
+" cx[motion], cxx (line), X (visual), cxc (cancel)
 set exchange
+
+" gcc (normal), gc (visual)
 set commentary
-set ReplaceWithRegister
+
+" ys[motion][char] (e.g. ysiw'); yss[char] (line, yss'); ds[char] delete surround
+" cs[old-char][new-char] e.g. cs([
 set surround
+
+" <leader>fe
 set nerdtree
 
 " Highlighting Plugins
@@ -44,9 +52,8 @@ set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Object Plugins
-set textobj-entire
-set indent-object
-set argtextobj
+set textobj-entire " select whole buffer with vae instead of ggVG
+set argtextobj " daa (delete arg), cia (change arg), via (select arg), yia (yank arg)
 let g:argtextobj_pairs="[:],(:),<:>"
 
 " Which-key settings
@@ -60,8 +67,8 @@ let g:WhichKey_SortOrder = "by_key_prefix_first"
 "" Key Mappings
 "" ========================================================
 " Tab navigation
-nmap <C-p> <Action>(PreviousTab)
-nmap <C-n> <Action>(NextTab)
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
 
 " Pane navigation
 nnoremap <C-h> <C-w>h
