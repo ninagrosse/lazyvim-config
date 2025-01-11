@@ -52,8 +52,10 @@ set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Object Plugins
-set textobj-entire " select whole buffer with vae instead of ggVG
-set argtextobj " daa (delete arg), cia (change arg), via (select arg), yia (yank arg)
+" select whole buffer with vae instead of ggVG
+set textobj-entire
+" daa (delete arg), cia (change arg), via (select arg), yia (yank arg)
+set argtextobj
 let g:argtextobj_pairs="[:],(:),<:>"
 
 " Which-key settings
@@ -80,7 +82,10 @@ nnoremap <C-j> <C-w>j
 nmap <C-i> <Action>(Back)
 nmap <C-o> <Action>(Forward)
 
-" Jump between methods TODO!
+" vim-flash s[char]
+map s <Action>(flash.search)
+
+" Jump between methods
 nmap [[ <Action>(MethodUp)
 nmap ]] <Action>(MethodDown)
 
@@ -97,14 +102,12 @@ nmap <C-S-m> <Action>(ToolWindowsGroup)
 "" Leader Commands
 "" ========================================================
 
-" vim-flash instead of sneak / easymotion
-map s <Action>(flash.search)
-
 " Information commands
 nmap <leader>ie <action>(ShowErrorDescription)
 nmap <leader>it <action>(ExpressionTypeInfo)
 nmap <leader>ip <action>(ParameterInfo)
-nmap <leader>ij <action>(QuickJavaDoc)
+" capital K also works (hover)
+nmap <leader>ij <action>(QuickJavaDoc) 
 nmap <leader>if <action>(FileStructurePopup)
 nmap <leader>iU <action>(ShowUmlDiagram)
 nmap <leader>ih <action>(CallHierarchy)
@@ -124,14 +127,14 @@ let g:WhichKeyDesc_info_method_hierarchy = "<leader>im Method Hierarchy"
 
 " Window splits
 nmap <leader>wv <action>(SplitVertically)
-nmap <leader>wh <action>(SplitHorizontally)
+nmap <leader>ws <action>(SplitHorizontally)
 nmap <leader>wu <action>(Unsplit)
 nmap <leader>wm <action>(MoveEditorToOppositeTabGroup)
 nmap <leader>wb <action>(Back)
 nmap <leader>wf <action>(Forward)
 let g:WhichKeyDesc_window = "<leader>w Window splits"
 let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
-let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>ws Split horizontally"
 let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
 let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
 let g:WhichKeyDesc_window_split_back = "<leader>wb Back split"
@@ -171,7 +174,6 @@ let g:WhichKeyDesc_tabs_close_all_but_active = "<leader>to Close All Tabs But Ac
 let g:WhichKeyDesc_tabs_close_all_unpinned = "<leader>ta Close All Unpinned Tabs"
 
 
-
 " Display options
 map <leader>Dd <action>(ToggleDistractionFreeMode)
 map <leader>Dz <action>(ToggleZenMode)
@@ -183,9 +185,9 @@ let g:WhichKeyDesc_fullscreen = "<leader>Df Toggle full screen"
 
 
 " File navigation
-nmap <leader>fg <Action>(GotoFile)
+nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fr <Action>(RecentFiles)
-nmap <leader>fc <Action>(FindInPath)
+nmap <leader>/ <Action>(FindInPath)
 nmap <leader>fl <Action>(RecentLocations)
 nmap <leader>fs <Action>(NewScratchFile)
 nmap <leader>fe :NERDTreeToggle<CR>
@@ -193,13 +195,12 @@ nmap <leader>fo <Action>(OpenFile)
 nmap <leader>fy <Action>(CopyAbsolutePath)
 nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fh <Action>(LocalHistory.ShowHistory)
-nmap <leader>ff <Action>(ShowFilePath)
+nmap <leader>fx <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
-nmap <leader>fp <Action>(ReplaceInPath)
 let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
-let g:WhichKeyDesc_file_opt_goto_file = "<leader>fg Go To File"
-let g:WhichKeyDesc_file_opt_goto_content = "<leader>fc Find In Files"
+let g:WhichKeyDesc_file_opt_goto_file = "<leader>ff Go To File"
 let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
+let g:WhichKeyDesc_file_opt_goto_content = "<leader>/ Find/Grep In Files"
 let g:WhichKeyDesc_file_opt_show_recent_locations = "<leader>fl Recent Locations"
 let g:WhichKeyDesc_file_opt_new_scratch_file = "<leader>fs New Scratch File"
 let g:WhichKeyDesc_file_opt_toggle_nerdtree = "<leader>fe Toggle NERDTree"
@@ -207,9 +208,8 @@ let g:WhichKeyDesc_file_opt_open_file = "<leader>fo Open File"
 let g:WhichKeyDesc_file_opt_copy_path = "<leader>fy Copy Absolute Path"
 let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects"
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
-let g:WhichKeyDesc_file_opt_show_path = "<leader>ff Show File Path"
+let g:WhichKeyDesc_file_opt_show_path = "<leader>fx Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
-let g:WhichKeyDesc_file_opt_replace_in_path = "<leader>fp Replace In Path"
 
 
 " Run Actions
@@ -237,14 +237,16 @@ nmap <leader>dx <Action>(Debug)
 nmap <leader>dc <Action>(ContextDebug)
 nmap <leader>dv <Action>(ViewBreakpoints)
 nmap <leader>de <Action>(EditBreakpoint)
+" Works only when debugger actually stopped at a breakpoint
 nmap <leader>dm <Action>(XDebugger.MuteBreakpoints)
 nmap <leader>dt <Action>(ToggleLineBreakpoint)
 nmap <leader>dC <Action>(RunToCursor)
 nmap <leader>di <Action>(StepInto)
 nmap <leader>do <Action>(StepOver)
 nmap <leader>dr <Action>(Resume)
+nmap <leader>ds <Action>(Stop)
 nmap <leader>dR <Action>(EvaluateExpression)
-nmap <leader>dt <Action>(ActivateDebugToolWindow)
+nmap <leader>dw <Action>(ActivateDebugToolWindow)
 let g:WhichKeyDesc_debugging = "<leader>d Debugging"
 let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
 let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
@@ -256,8 +258,9 @@ let g:WhichKeyDesc_debug_run_to_cursor = "<leader>dC Run to Cursor"
 let g:WhichKeyDesc_debug_step_into = "<leader>di Step Into"
 let g:WhichKeyDesc_debug_step_over = "<leader>do Step Over"
 let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
+let g:WhichKeyDesc_debug_stop = "<leader>ds Stop Debugging"
 let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
-let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dt Activate Debug Tool Window"
+let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dw Activate Debug Tool Window"
 
 
 " Language Actions
@@ -312,17 +315,17 @@ let g:WhichKeyDesc_bookmarks_next = "<leader>bn Next Bookmark"
 
 
 " Go To
-nmap <leader>gd <Action>(GotoDeclaration)
-nmap <leader>go <Action>(GotoSuperMethod)
-nmap <leader>gD <Action>(GotoTypeDeclaration)
-nmap <leader>gi <Action>(GotoImplementation)
-nmap <leader>gT <Action>(GotoTest)
-let g:WhichKeyDesc_goto = "<leader>g Go To"
-let g:WhichKeyDesc_goto_declaration = "<leader>gd Go To Declaration"
-let g:WhichKeyDesc_goto_super_method = "<leader>go Go To Super Method"
-let g:WhichKeyDesc_goto_type_declaration = "<leader>gD Go To Type Declaration"
-let g:WhichKeyDesc_goto_implementation = "<leader>gi Go To Implementation"
-let g:WhichKeyDesc_goto_test = "<leader>gT Go To Test"
+nmap gd <Action>(GotoDeclaration)
+nmap go <Action>(GotoSuperMethod)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gT <Action>(GotoTest)
+let g:WhichKeyDesc_goto = "g Go To"
+let g:WhichKeyDesc_goto_declaration = "gd Go To Declaration"
+let g:WhichKeyDesc_goto_super_method = "go Go To Super Method"
+let g:WhichKeyDesc_goto_type_declaration = "gD Go To Type Declaration"
+let g:WhichKeyDesc_goto_implementation = "gi Go To Implementation"
+let g:WhichKeyDesc_goto_test = "gT Go To Test"
 
 
 " Search
@@ -334,6 +337,7 @@ nmap <leader>sc <Action>(GotoClass)
 nmap <leader>sf <Action>(GotoFile)
 nmap <leader>ss <Action>(GotoSymbol)
 nmap <leader>st <Action>(TextSearchAction)
+nmap <leader>sg <Action>(FindInPath)
 let g:WhichKeyDesc_search = "<leader>s Search"
 let g:WhichKeyDesc_search_everywhere = "<leader>sS Search Everywhere"
 let g:WhichKeyDesc_search_usages = "<leader>su Find Usages"
@@ -343,6 +347,7 @@ let g:WhichKeyDesc_search_class = "<leader>sc Search Class"
 let g:WhichKeyDesc_search_file = "<leader>sf Search File"
 let g:WhichKeyDesc_search_symbol = "<leader>ss Search Symbol"
 let g:WhichKeyDesc_search_text = "<leader>st Search Text"
+let g:WhichKeyDesc_search_in_files = "<leader>sg Search/Grep In Files"
 
 
 " Case Conversion
