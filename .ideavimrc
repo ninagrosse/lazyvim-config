@@ -197,6 +197,7 @@ nmap <leader>fp <Action>(ManageRecentProjects)
 nmap <leader>fh <Action>(LocalHistory.ShowHistory)
 nmap <leader>fx <Action>(ShowFilePath)
 nmap <leader>fi <Action>(SelectIn)
+nmap <leader>ft <Action>(ActivateTerminalToolWindow)
 let g:WhichKeyDesc_file_opt = "<leader>f File navigation"
 let g:WhichKeyDesc_file_opt_goto_file = "<leader>ff Go To File"
 let g:WhichKeyDesc_file_opt_show_recent_files = "<leader>fr Recent Files"
@@ -210,26 +211,27 @@ let g:WhichKeyDesc_file_opt_recent_projects = "<leader>fp Manage Recent Projects
 let g:WhichKeyDesc_file_opt_history = "<leader>fh Show Local History"
 let g:WhichKeyDesc_file_opt_show_path = "<leader>fx Show File Path"
 let g:WhichKeyDesc_file_opt_select_in = "<leader>fi Select In"
+let g:WhichKeyDesc_file_terminal = "<leader>ft Open Terminal"
 
 
 " Run Actions
 nmap <leader>rm <action>(RunMenu)
 nmap <leader>rn <action>(RunClass)
-nmap <leader>rc <Action>(ContextRun)
+nmap <leader>rC <Action>(ContextRun)
 nmap <leader>rr <action>(Rerun)
 nmap <leader>rt <Action>(RunTests)
 nmap <leader>rf <action>(RerunFailedTests)
 nmap <leader>rs <Action>(Stop)
-nmap <leader>rC <action>(ChooseRunConfiguration)
+nmap <leader>rc <action>(ChooseRunConfiguration)
 let g:WhichKeyDesc_run = "<leader>r Run"
 let g:WhichKeyDesc_run_menu = "<leader>rm Run Menu"
 let g:WhichKeyDesc_run_class = "<leader>rn Run Class"
-let g:WhichKeyDesc_run_context = "<leader>rc Context Run"
+let g:WhichKeyDesc_run_context = "<leader>rC Context Run"
 let g:WhichKeyDesc_run_rerun = "<leader>rr Rerun"
 let g:WhichKeyDesc_run_tests = "<leader>rt Run Tests"
 let g:WhichKeyDesc_run_failed = "<leader>rf Rerun Failed Tests"
 let g:WhichKeyDesc_run_stop = "<leader>rs Stop"
-let g:WhichKeyDesc_run_choose_configuration = "<leader>rC Choose Run Configuration"
+let g:WhichKeyDesc_run_choose_configuration = "<leader>rc Choose Run Configuration"
 
 
 " Debugging commands
@@ -247,6 +249,7 @@ nmap <leader>dr <Action>(Resume)
 nmap <leader>ds <Action>(Stop)
 nmap <leader>dR <Action>(EvaluateExpression)
 nmap <leader>dw <Action>(ActivateDebugToolWindow)
+nmap <leader>dh <Action>(XDebugger.Hotswap.Modified.Files)
 let g:WhichKeyDesc_debugging = "<leader>d Debugging"
 let g:WhichKeyDesc_debug_execute = "<leader>dx Execute Debug"
 let g:WhichKeyDesc_debug_context = "<leader>dc Context Debug"
@@ -261,39 +264,40 @@ let g:WhichKeyDesc_debug_resume = "<leader>dr Resume Debugging"
 let g:WhichKeyDesc_debug_stop = "<leader>ds Stop Debugging"
 let g:WhichKeyDesc_debug_evaluate_expression = "<leader>dR Evaluate Expression"
 let g:WhichKeyDesc_debug_activate_tool_window = "<leader>dw Activate Debug Tool Window"
+let g:WhichKeyDesc_debug_hotswap_files = "<leader>dh Hotswap modified files"
 
 
-" Language Actions
-nmap <leader>ll <Action>(Refactorings.QuickListPopupAction)
-nmap <leader>lr <Action>(RenameElement)
-nmap <leader>lc <Action>(ChangeSignature)
-nmap <leader>lv <Action>(IntroduceVariable)
-nmap <leader>li <Action>(Inline)
-nmap <leader>lf <Action>(IntroduceField)
-nmap <leader>lm <Action>(ExtractMethod)
-nmap <leader>lC <Action>(IntroduceConstant)
-nmap <leader>lp <Action>(IntroduceParameter)
-nmap <leader>lo <Action>(IntroduceParameterObject)
-nmap <leader>le <Action>(EncapsulateFields)
-nmap <leader>la <Action>(ShowIntentionActions)
-nmap <leader>lR <Action>(ReformatCode)
-nmap <leader>lI <Action>(InspectCode)
-nmap <leader>lG <Action>(Generate)
-let g:WhichKeyDesc_language = "<leader>l Language"
-let g:WhichKeyDesc_language_menu = "<leader>ll Quick List"
-let g:WhichKeyDesc_language_rename = "<leader>lr Rename"
-let g:WhichKeyDesc_language_change_signature = "<leader>lc Change Signature"
-let g:WhichKeyDesc_language_inline_variable = "<leader>li Inline"
-let g:WhichKeyDesc_language_introduce_field = "<leader>lf Introduce Field"
-let g:WhichKeyDesc_language_extract_method = "<leader>lm Extract Method"
-let g:WhichKeyDesc_language_introduce_constant = "<leader>lC Introduce Constant"
-let g:WhichKeyDesc_language_introduce_parameter = "<leader>lp Introduce Parameter"
-let g:WhichKeyDesc_language_introduce_param_object = "<leader>lo Introduce Parameter Object"
-let g:WhichKeyDesc_language_encapsulate = "<leader>le Encapsulate Fields"
-let g:WhichKeyDesc_language_show_intention_actions = "<leader>la Show Intention Actions"
-let g:WhichKeyDesc_language_reformat_code = "<leader>lR Reformat Code"
-let g:WhichKeyDesc_language_inspect_code = "<leader>lI Inspect Code"
-let g:WhichKeyDesc_language_generate = "<leader>lG Generate"
+" Code Actions
+nmap <leader>cl <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>cr <Action>(RenameElement)
+nmap <leader>cs <Action>(ChangeSignature)
+nmap <leader>cv <Action>(IntroduceVariable)
+nmap <leader>ci <Action>(Inline)
+nmap <leader>cf <Action>(IntroduceField)
+nmap <leader>cm <Action>(ExtractMethod)
+nmap <leader>cc <Action>(IntroduceConstant)
+nmap <leader>cp <Action>(IntroduceParameter)
+nmap <leader>co <Action>(IntroduceParameterObject)
+nmap <leader>ce <Action>(EncapsulateFields)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>cR <Action>(ReformatCode)
+nmap <leader>cI <Action>(InspectCode)
+nmap <leader>cg <Action>(Generate)
+let g:WhichKeyDesc_language = "<leader>c Code Actions"
+let g:WhichKeyDesc_language_menu = "<leader>cl Quick List"
+let g:WhichKeyDesc_language_rename = "<leader>cr Rename"
+let g:WhichKeyDesc_language_change_signature = "<leader>cs Change Signature"
+let g:WhichKeyDesc_language_inline_variable = "<leader>ci Inline"
+let g:WhichKeyDesc_language_introduce_field = "<leader>cf Introduce Field"
+let g:WhichKeyDesc_language_extract_method = "<leader>cm Extract Method"
+let g:WhichKeyDesc_language_introduce_constant = "<leader>cc Introduce Constant"
+let g:WhichKeyDesc_language_introduce_parameter = "<leader>cp Introduce Parameter"
+let g:WhichKeyDesc_language_introduce_param_object = "<leader>co Introduce Parameter Object"
+let g:WhichKeyDesc_language_encapsulate = "<leader>ce Encapsulate Fields"
+let g:WhichKeyDesc_language_show_intention_actions = "<leader>ca Show Intention Actions"
+let g:WhichKeyDesc_language_reformat_code = "<leader>cR Reformat Code"
+let g:WhichKeyDesc_language_inspect_code = "<leader>cI Inspect Code"
+let g:WhichKeyDesc_language_generate = "<leader>cg Generate"
 
 
 """ Bookmarks
@@ -351,58 +355,62 @@ let g:WhichKeyDesc_search_in_files = "<leader>sg Search/Grep In Files"
 
 
 " Case Conversion
-vmap <leader>cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
-vmap <leader>cc <Action>(me.laria.code.idea_caseconv.CamelCaseAction)
-vmap <leader>cp <Action>(me.laria.code.idea_caseconv.PascalCaseAction)
-vmap <leader>cs <Action>(me.laria.code.idea_caseconv.SnakeCaseAction)
-vmap <leader>cS <Action>(me.laria.code.idea_caseconv.ScreamingSnakeCaseAction)
-vmap <leader>cl <Action>(me.laria.code.idea_caseconv.LowerCaseAction)
-vmap <leader>cu <Action>(me.laria.code.idea_caseconv.UpperCaseAction)
-vmap <leader>c. <Action>(me.laria.code.idea_caseconv.DotCaseAction)
-vmap <leader>cw <Action>(me.laria.code.idea_caseconv.SeparateWordsAction)
-vmap <leader>ct <Action>(me.laria.code.idea_caseconv.TitleCaseAction)
-vmap <leader>c- <Action>(me.laria.code.idea_caseconv.DashCaseAction)
-vmap <leader>cd <Action>(me.laria.code.idea_caseconv.SentenceCaseAction)
-let g:WhichKeyDesc_case_conversion = "<leader>c Case Conversion"
-let g:WhichKeyDesc_change_case_menu = "<leader>cm Case Menu"
-let g:WhichKeyDesc_case_conversion_camel = "<leader>cc camelCase"
-let g:WhichKeyDesc_case_conversion_pascal = "<leader>cp PascalCase"
-let g:WhichKeyDesc_case_conversion_snake = "<leader>cs snake_case"
-let g:WhichKeyDesc_case_conversion_screaming_snake = "<leader>cS SCREAMING_SNAKE_CASE"
-let g:WhichKeyDesc_case_conversion_lower = "<leader>cl lowercase"
-let g:WhichKeyDesc_case_conversion_upper = "<leader>cu UPPERCASE"
-let g:WhichKeyDesc_case_conversion_dot = "<leader>c. dot.case"
-let g:WhichKeyDesc_case_conversion_words = "<leader>cw Separate Words"
-let g:WhichKeyDesc_case_conversion_title = "<leader>ct Title Case"
-let g:WhichKeyDesc_case_conversion_dash = "<leader>c- dash-case"
-let g:WhichKeyDesc_case_conversion_sentence = "<leader>cd Sentence case"
+vmap <leader>Cm <Action>(me.laria.code.idea_caseconv.convert_case_menu)
+vmap <leader>Cc <Action>(me.laria.code.idea_caseconv.CamelCaseAction)
+vmap <leader>Cp <Action>(me.laria.code.idea_caseconv.PascalCaseAction)
+vmap <leader>Cs <Action>(me.laria.code.idea_caseconv.SnakeCaseAction)
+vmap <leader>CS <Action>(me.laria.code.idea_caseconv.ScreamingSnakeCaseAction)
+vmap <leader>Cl <Action>(me.laria.code.idea_caseconv.LowerCaseAction)
+vmap <leader>Cu <Action>(me.laria.code.idea_caseconv.UpperCaseAction)
+vmap <leader>C. <Action>(me.laria.code.idea_caseconv.DotCaseAction)
+vmap <leader>Cw <Action>(me.laria.code.idea_caseconv.SeparateWordsAction)
+vmap <leader>Ct <Action>(me.laria.code.idea_caseconv.TitleCaseAction)
+vmap <leader>C- <Action>(me.laria.code.idea_caseconv.DashCaseAction)
+vmap <leader>Cd <Action>(me.laria.code.idea_caseconv.SentenceCaseAction)
+let g:WhichKeyDesc_case_conversion = "<leader>C Case Conversion"
+let g:WhichKeyDesc_change_case_menu = "<leader>Cm Case Menu"
+let g:WhichKeyDesc_case_conversion_camel = "<leader>Cc camelCase"
+let g:WhichKeyDesc_case_conversion_pascal = "<leader>Cp PascalCase"
+let g:WhichKeyDesc_case_conversion_snake = "<leader>Cs snake_case"
+let g:WhichKeyDesc_case_conversion_screaming_snake = "<leader>CS SCREAMING_SNAKE_CASE"
+let g:WhichKeyDesc_case_conversion_lower = "<leader>Cl lowercase"
+let g:WhichKeyDesc_case_conversion_upper = "<leader>Cu UPPERCASE"
+let g:WhichKeyDesc_case_conversion_dot = "<leader>C. dot.case"
+let g:WhichKeyDesc_case_conversion_words = "<leader>Cw Separate Words"
+let g:WhichKeyDesc_case_conversion_title = "<leader>Ct Title Case"
+let g:WhichKeyDesc_case_conversion_dash = "<leader>C- dash-case"
+let g:WhichKeyDesc_case_conversion_sentence = "<leader>Cd Sentence case"
 
 
 " Git
-nmap <leader>Gc <Action>(Vcs.Show.Local.Changes)
-nmap <leader>Gb <Action>(Git.Branches)
-nmap <leader>Gf <Action>(Git.Fetch)
-nmap <leader>Gp <Action>(Vcs.Push)
-nmap <leader>GP <Action>(Git.Commit.And.Push.Executor)
-nmap <leader>Go <Action>(Github.View.Pull.Request)
-nmap <leader>Gm <Action>(VcsGroups)
-nmap <leader>Gg <Action>(CheckinProject)
-nmap <leader>Ga <Action>(Annotate)
-nmap <leader>Gt <Action>(ActivateVersionControlToolWindow)
-nmap <leader>Gr <Action>(Vcs.RollbackChangedLines)
-nmap <leader>Gu <Action>(Vcs.UpdateProject)
-let g:WhichKeyDesc_git = "<leader>G Git"
-let g:WhichKeyDesc_git_checkin = "<leader>Gg Checkin"
-let g:WhichKeyDesc_git_branches = "<leader>Gb Branches"
-let g:WhichKeyDesc_git_push = "<leader>Gp Push"
-let g:WhichKeyDesc_git_commit_and_push = "<leader>GP Commit & Push"
-let g:WhichKeyDesc_git_menu = "<leader>Gm Menu"
-let g:WhichKeyDesc_git_fetch = "<leader>Gf Fetch"
-let g:WhichKeyDesc_git_annotate = "<leader>Ga Annotate"
-let g:WhichKeyDesc_git_log = "<leader>Gl Log"
-let g:WhichKeyDesc_git_tool = "<leader>Gt Tool"
-let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>Gr Rollback"
-let g:WhichKeyDesc_git_open_pull_requests = "<leader>Go Open Pull Requests"
-let g:WhichKeyDesc_git_local_changes = "<leader>Gc Show Local Changes"
-let g:WhichKeyDesc_git_update_project = "<leader>Gu Update Project"
-
+nmap <leader>gu <Action>(Vcs.UpdateProject)
+nmap <leader>gl <Action>(Vcs.Show.Local.Changes)
+nmap <leader>gb <Action>(Git.Branches)
+nmap <leader>gc <Action>(CheckinProject)
+nmap <leader>gp <Action>(Vcs.Push)
+nmap <leader>gP <Action>(Git.Commit.And.Push.Executor)
+nmap <leader>go <Action>(Vcs.QuickListPopupAction)
+nmap <leader>gm <Action>(VcsGroups)
+nmap <leader>gw <Action>(ActivateVersionControlToolWindow)
+nmap <leader>ga <Action>(Annotate)
+nmap <leader>g] <Action>(VcsShowNextChangeMarker)
+nmap <leader>g[ <Action>(VcsShowPrevChangeMarker)
+nmap <leader>gr <Action>(Vcs.RollbackChangedLines)
+nmap <leader>gR <Action>(ChangesView.Revert)
+nmap <leader>gd <Action>(Compare.SameVersion)
+let g:WhichKeyDesc_git = "<leader>g Git"
+let g:WhichKeyDesc_git_update_project = "<leader>gu Update Project"
+let g:WhichKeyDesc_git_local_changes = "<leader>gl Show Local Changes"
+let g:WhichKeyDesc_git_branches = "<leader>gb Branches"
+let g:WhichKeyDesc_git_commit = "<leader>gc Prepare Commit"
+let g:WhichKeyDesc_git_push = "<leader>gp Push"
+let g:WhichKeyDesc_git_commit_and_push = "<leader>gP Commit & Push"
+let g:WhichKeyDesc_git_operations = "<leader>go Git Operations"
+let g:WhichKeyDesc_git_menu = "<leader>gm Git Menu"
+let g:WhichKeyDesc_git_window = "<leader>gw Git Window"
+let g:WhichKeyDesc_git_annotate = "<leader>ga Annotate File"
+let g:WhichKeyDesc_git_next_hunk = "<leader>g] Next Hunk"
+let g:WhichKeyDesc_git_prev_hunk = "<leader>g[ Previous Hunk"
+let g:WhichKeyDesc_git_rollback_changed_lines = "<leader>gr Rollback Hunk"
+let g:WhichKeyDesc_git_rollback_file = "<leader>gR Rollback File"
+let g:WhichKeyDesc_git_diff_file = "<leader>gd Diff File"
