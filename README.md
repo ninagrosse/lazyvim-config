@@ -1,6 +1,6 @@
 # 💤 My LazyVim config
 
-This configuration is best used in conjunction with my [dotfiles](https://github.com/ninagrosse/dotfiles) or [dotfiles-win](https://github.com/ninagrosse/dotfiles-win) to have all the requirements already installed and configured.
+This configuration is best used in conjunction with my [dotfiles](https://github.com/ninagrosse/dotfiles) to have all the requirements already installed and configured.
 
 ## Installation
 
