@@ -13,3 +13,12 @@ vim.api.nvim_create_autocmd("ExitPre", {
   command = "set guicursor=a:hor90",
   desc = "Set cursor back to unterline when leaving Neovim.",
 })
+
+-- Disable spell check and diagnostics in markdown
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.spell = false
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})
