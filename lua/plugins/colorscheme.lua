@@ -14,7 +14,6 @@ return {
       flavour = "mocha",
       transparent_background = transparent_background, -- When in Neovide, this is set to false, otherwise true
     },
-    tag = "v1.10.0", -- pin to fix bug with bufferline. See https://github.com/LazyVim/LazyVim/issues/6355 and https://github.com/LazyVim/LazyVim/pull/6354
   },
   {
     "LazyVim/LazyVim",
