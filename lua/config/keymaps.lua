@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>ob", "<cmd>Obsidian backlinks<cr>", { desc = "Show 
 vim.keymap.set("n", "<leader>ol", "<cmd>Obsidian links<cr>", { desc = "Search list of links in current note" })
 
 vim.keymap.set("n", "<leader>od", "<cmd>Obsidian today<cr>", { desc = "Open/create today's daily note" })
-vim.keymap.set("n", "<leader>oD", "<cmd>Obsidian dailies<cr>", { desc = "Open list of daily notes" })
+vim.keymap.set("n", "<leader>oD", "<cmd>Obsidian dailies -20<cr>", { desc = "Open list of daily notes" })
 
 vim.keymap.set("n", "<leader>on", "<cmd>Obsidian new<cr>", { desc = "Create new note" })
 vim.keymap.set("n", "<leader>oN", "<cmd>Obsidian new_from_template<cr>", { desc = "Create new note from template" })
