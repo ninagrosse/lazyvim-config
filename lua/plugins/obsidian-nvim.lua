@@ -32,7 +32,7 @@ return {
     ---@module 'obsidian'
     ---@type obsidian.config
     opts = {
-      ui = {
+      ui = { -- disabled weil render-markdown das Rendering übernimmt
         enable = false,
       },
       workspaces = {
@@ -40,11 +40,20 @@ return {
           name = "personal",
           path = "~/notebook",
         },
+        {
+          name = "work",
+          path = "~/obsidian-work",
+        },
       },
       checkbox = {
         -- Checkboxen mit <CR> togglen
-        -- Wird von render-markdown gerendert
         order = { " ", "~", "x", "!", ">", "-" },
+      },
+      daily_notes = {
+        folder = "Daily_Logs",
+      },
+      templates = {
+        folder = "Templates",
       },
     },
   },
