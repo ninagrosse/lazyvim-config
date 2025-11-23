@@ -18,7 +18,16 @@ vim.api.nvim_create_autocmd("ExitPre", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
-    vim.opt_local.spell = false
     vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})
+
+-- Delete and re-add wrap_spell autogroup to disable spell check by default
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("lazyvim_wrap_spell", { clear = true }),
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.spell = false
+    vim.opt_local.wrap = true
   end,
 })
