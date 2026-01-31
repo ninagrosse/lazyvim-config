@@ -55,6 +55,7 @@ return {
       templates = {
         folder = "Templates",
       },
+      legacy_commands = false,
     },
   },
 }
