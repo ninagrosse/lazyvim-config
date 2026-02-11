@@ -54,6 +54,21 @@ return {
       },
       templates = {
         folder = "Templates",
+        substitutions = {
+          -- replaces {{week}} with "Year-WeekOfYear", e.g. 2026-W7
+          week = function()
+            local weeknumber = os.date("%W", os.time()) + 1 -- German weeks start on Monday, so we're one week "ahead" compared to US
+            return os.date("%Y-W" .. weeknumber, os.time())
+          end,
+          -- replaces {{month}} with yyyy-MM, e.g. 2026-02
+          month = function()
+            return os.date("%Y-%M", os.time())
+          end,
+          -- replaces {{year}} with yyyy, e.g. 2026
+          year = function()
+            return os.date("%Y", os.time())
+          end,
+        },
       },
       legacy_commands = false,
     },
