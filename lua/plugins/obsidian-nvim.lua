@@ -62,7 +62,7 @@ return {
           end,
           -- replaces {{month}} with yyyy-MM, e.g. 2026-02
           month = function()
-            return os.date("%Y-%M", os.time())
+            return os.date("%Y-%m", os.time())
           end,
           -- replaces {{year}} with yyyy, e.g. 2026
           year = function()
