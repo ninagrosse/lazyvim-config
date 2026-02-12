@@ -35,14 +35,11 @@ return {
       ui = { -- disabled weil render-markdown das Rendering übernimmt
         enable = false,
       },
+      legacy_commands = false,
       workspaces = {
         {
-          name = "personal",
+          name = "notebook",
           path = "~/notebook",
-        },
-        {
-          name = "work",
-          path = "~/obsidian-work",
         },
       },
       checkbox = {
@@ -50,10 +47,10 @@ return {
         order = { " ", "~", "x", "!", ">", "-" },
       },
       daily_notes = {
-        folder = "Daily_Logs",
+        folder = "01_Daily",
       },
       templates = {
-        folder = "Templates",
+        folder = "90_Templates",
         substitutions = {
           -- replaces {{week}} with "Year-WeekOfYear", e.g. 2026-W7
           week = function()
@@ -70,7 +67,6 @@ return {
           end,
         },
       },
-      legacy_commands = false,
     },
   },
 }
