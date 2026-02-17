@@ -49,6 +49,7 @@ return {
       daily_notes = {
         folder = "01_Daily",
       },
+      notes_subdir = "00_Inbox",
       templates = {
         folder = "90_Templates",
         substitutions = {
@@ -67,6 +68,11 @@ return {
           end,
         },
       },
+      note_id_func = function(title)
+        return title
+      end,
+      wiki_link_func = "use_path_only",
+      preferred_link_style = "wiki",
     },
   },
 }
