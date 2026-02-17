@@ -71,7 +71,6 @@ return {
       note_id_func = function(title)
         return title
       end,
-      wiki_link_func = "use_path_only",
       preferred_link_style = "wiki",
     },
   },
