@@ -71,7 +71,9 @@ return {
       note_id_func = function(title)
         return title
       end,
-      preferred_link_style = "wiki",
+      link = {
+        style = "wiki",
+      },
     },
   },
 }
