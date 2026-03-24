@@ -48,6 +48,7 @@ return {
       },
       daily_notes = {
         folder = "01_Daily",
+        default_tags = {},
       },
       notes_subdir = "00_Inbox",
       templates = {
@@ -73,6 +74,9 @@ return {
       end,
       link = {
         style = "wiki",
+      },
+      frontmatter = {
+        sort = { "id", "title", "created", "context", "type", "area", "status", "week", "month", "year", "tags" },
       },
     },
   },
